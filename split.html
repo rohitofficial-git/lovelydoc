@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Split PDF - ToolNest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="gradient-bg">
+        <div class="gradient-1"></div>
+        <div class="gradient-2"></div>
+        <div class="gradient-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <span class="logo-text">Tool<span>Nest</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Compress</a>
+                <a href="merge.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Merge</a>
+                <a href="split.html" class="nav-link active" style="font-size: 0.85rem; padding: 0.5rem;">Split</a>
+                <a href="img-to-pdf.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">JPG to PDF</a>
+                <a href="img-compress.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">IMG Compress</a>
+                <a href="img-resize.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Resize</a>
+                <a href="blog.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Blog</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-cut"></i>
+                <span>Extract Pages in Seconds</span>
+            </div>
+            <h1 class="hero-title">
+                Split PDF Files
+                <span class="gradient-text">Accurately</span>
+            </h1>
+            <p class="hero-description">
+                Extract specified pages or simply cut out what you need cleanly and securely.
+            </p>
+        </div>
+
+        <!-- Main Upload Card -->
+        <div class="upload-card" id="uploadArea">
+            <div class="upload-content">
+                <div class="upload-icon-wrapper">
+                    <div class="upload-icon-bg">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                </div>
+                <h3>Select a PDF to split</h3>
+                <p>or click & drag to browse</p>
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+            </div>
+        </div>
+
+        <!-- File Card & Controls -->
+        <div id="controlsContainer" style="display: none;">
+            <div class="file-card">
+                <div class="file-card-header" style="margin-bottom: 0;">
+                    <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="file-info">
+                        <h4 id="fileName">...</h4>
+                        <p id="filePages">Pages: 0</p>
+                    </div>
+                    <button class="remove-file" id="removeFile"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <div class="controls-card" style="margin-top: 2rem;">
+                <div class="controls-header">
+                    <h3>Split By Range</h3>
+                    <p>Define multiple ranges to split the document into separate PDFs</p>
+                </div>
+                
+                <div id="rangesContainer">
+                    <div class="range-row" style="display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center;">
+                        <span style="font-weight: 500; min-width: 70px;">Range 1:</span>
+                        <input type="number" class="range-start" placeholder="From" min="1" style="width: 80px; padding: 0.5rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none;">
+                        <span>to</span>
+                        <input type="number" class="range-end" placeholder="To" min="1" style="width: 80px; padding: 0.5rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none;">
+                    </div>
+                </div>
+
+                <button id="addRangeBtn" style="background: none; border: 1px dashed var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; color: var(--text-primary); width: 100%; margin-bottom: 1.5rem; transition: all 0.3s;"><i class="fas fa-plus"></i> Add Another Range</button>
+                
+                <button class="compress-button" id="splitBtn">
+                    <span>Split & Create ZIP</span>
+                    <i class="fas fa-file-archive"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Card (Hidden initially) -->
+        <div class="result-card" id="resultCard" style="display: none;">
+            <div class="result-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Split Complete!</h3>
+                <p>Your PDFs have been created successfully.</p>
+            </div>
+
+            <div class="result-actions">
+                <button class="btn-download" id="downloadBtn">
+                    <i class="fas fa-download"></i>
+                    <span>Download ZIP File</span>
+                </button>
+                <button class="btn-new" id="newFileBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Split Another</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-card">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+                <h4>Processing document</h4>
+                <p id="loadingMessage">Extracting pages...</p>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQs -->
+        <div class="features-section" style="text-align: left; background: var(--bg-card); padding: 3rem; border-radius: 24px; margin-bottom: 3rem; margin-top: 4rem; box-shadow: var(--shadow-sm);">
+            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary); font-size: 1.8rem;">How to Split a PDF and Extract Specific Pages</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">Huge PDF manuals and extensive reports can drag down your productivity. By securely splitting your PDF into smaller, focused segments, you can effortlessly share specific chapters or extract key information. With our dynamic range extractor, achieving this is instantaneous.</p>
+            <ol style="margin-bottom: 2.5rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                <li>Upload your large PDF document into the browser drop-zone area exactly once.</li>
+                <li>Enter the distinct "From" and "To" page limits that you want to isolate.</li>
+                <li>Click "+ Add Another Range" if you need to perform multiple extractions simultaneously.</li>
+                <li>Click "Split & Create ZIP" to receive your separated pages neatly structured within seconds!</li>
+            </ol>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.5rem;">Frequently Asked Questions (FAQ)</h3>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">1. Does the split tool alter my original document?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Don't worry, your original PDF file sits safely on your local hard drive unmodified. Our application simply reads it, extracts your exact designated page ranges, and outputs completely fresh, standalone copies for your convenience.</p>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">2. How can I split a single PDF into many distinct files?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Our dynamic range interface was built primarily for this scenario. Input your first section into 'Range 1', then press '+ Add Another Range' to define 'Range 2'. Make multiple ranges, and when activated, the tool will instantly segregate them and furnish you with a combined ZIP download containing all separate pieces.</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">3. Is this software fully free and private?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Yes. We pride ourselves on the fact that your documents do not get uploaded over the network. It's totally free, incredibly fast, and 100% private. This tool relies on raw JavaScript memory directly handled by your personal browser for safety.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer" style="text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+            <div class="ad-placeholder" style="min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; background: rgba(0,0,0,0.05); border-radius: 8px; color: var(--text-secondary);"><!-- AdSense Display Ad unit placeholder here --></div>
+            <div style="margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="about.html" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">© 2026 ToolNest • Made with <i class="fas fa-heart"></i> for privacy</p>
+        </footer>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-card); padding: 1.5rem; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 9999; text-align: center; border-top: 1px solid var(--border-color);">
+        <p style="margin-bottom: 1rem; color: var(--text-primary); font-family: 'Inter', sans-serif;">We use cookies to personalize content and ads, and to analyze our traffic. By continuing to use our site, you accept our <a href="privacy.html" style="color: var(--accent-primary); text-decoration: underline;">Privacy Policy</a>.</p>
+        <button onclick="document.getElementById('cookieConsent').style.display='none'; localStorage.setItem('cookieAccepted', 'true');" style="background: var(--accent-gradient); color: white; border: none; padding: 0.5rem 2rem; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: 'Inter', sans-serif;">Accept & Continue</button>
+    </div>
+    <script>
+        if (!localStorage.getItem('cookieAccepted')) {
+            document.getElementById('cookieConsent').style.display = 'block';
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="split.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

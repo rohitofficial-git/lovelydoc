@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Compress Image - ToolNest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="gradient-bg"><div class="gradient-1"></div><div class="gradient-2"></div><div class="gradient-3"></div></div>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo"><div class="logo-icon"><i class="fas fa-file-pdf"></i></div><span class="logo-text">Tool<span>Nest</span></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Compress</a>
+                <a href="merge.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Merge</a>
+                <a href="split.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Split</a>
+                <a href="img-to-pdf.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">JPG to PDF</a>
+                <a href="img-compress.html" class="nav-link active" style="font-size: 0.85rem; padding: 0.5rem;">IMG Compress</a>
+                <a href="img-resize.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Resize</a>
+                <a href="blog.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Blog</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-badge"><i class="fas fa-compress-arrows-alt"></i><span>Shrink JPGs & PNGs</span></div>
+            <h1 class="hero-title">Image <span class="gradient-text">Compressor</span></h1>
+            <p class="hero-description">Input your target file size and instantly compress images to exactly fit restrictions.</p>
+        </div>
+
+        <div class="upload-card" id="uploadArea">
+            <div class="upload-content">
+                <div class="upload-icon-wrapper"><div class="upload-icon-bg"><i class="fas fa-upload"></i></div></div>
+                <h3>Select an image</h3>
+                <input type="file" id="fileInput" accept="image/jpeg, image/png, image/webp" hidden>
+            </div>
+        </div>
+
+        <div id="controlsContainer" style="display: none; margin-bottom: 2rem;">
+            <div class="file-card">
+                <div class="file-card-header" style="margin-bottom: 0;">
+                    <div class="file-icon"><i class="fas fa-image"></i></div>
+                    <div class="file-info"><h4 id="fileName">...</h4><p id="fileSize">...</p></div>
+                    <button id="removeFile" style="background: none; border: none; color: var(--error);"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <div class="controls-card" style="margin-top: 2rem;">
+                <h3>Target File Size</h3>
+                <div class="target-size-selector" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <input type="number" id="targetSizeInput" placeholder="e.g., 50" style="flex: 2; padding: 1rem; border-radius: 12px; border: 2px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-size: 1.1rem; outline: none;">
+                    <select id="targetSizeUnit" style="flex: 1; padding: 1rem; border-radius: 12px; border: 2px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-size: 1.1rem; outline: none; cursor: pointer;">
+                        <option value="KB">KB</option>
+                        <option value="MB">MB</option>
+                    </select>
+                </div>
+                <button class="compress-button" id="compressBtn" style="margin-top: 1.5rem;">
+                    <span>Compress Image</span><i class="fas fa-bolt"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="result-card" id="resultCard" style="display: none;">
+            <div class="result-header">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Image Compressed!</h3>
+                <div class="stats-row" style="display: flex; gap: 2rem; margin-top: 1.5rem; background: var(--bg-secondary); padding: 1rem; border-radius: 12px; justify-content: center;">
+                    <div><p style="color: var(--text-secondary); font-size: 0.85rem;">Old Size</p><p id="oldSizeText" style="font-weight: 600; color: var(--text-primary);"></p></div>
+                    <div><p style="color: var(--text-secondary); font-size: 0.85rem;">New Size</p><p id="newSizeText" style="font-weight: 600; color: var(--success);"></p></div>
+                </div>
+            </div>
+            <div class="result-actions" style="margin-top: 2rem;">
+                <button class="btn-download" id="downloadBtn"><i class="fas fa-download"></i><span>Download Image</span></button>
+                <button class="btn-new" id="newFileBtn"><i class="fas fa-plus"></i><span>Compress Another</span></button>
+            </div>
+        </div>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-card">
+                <div class="loading-spinner"><div class="spinner-ring"></div><div class="spinner-ring"></div></div>
+                <h4>Compressing Image...</h4>
+            </div>
+        </div>
+        
+        <!-- SEO Content & FAQs -->
+        <div class="features-section" style="text-align: left; background: var(--bg-card); padding: 3rem; border-radius: 24px; margin-bottom: 3rem; margin-top: 4rem; box-shadow: var(--shadow-sm);">
+            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary); font-size: 1.8rem;">How to Shrink Image Size to Exact Custom Limits</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">Many websites, government portals, and university application forms reject high-resolution smartphone photos explicitly because they exceed strict upload caps like "Max Size: 100KB". Our powerful compressor intelligently crushes your file size down to the precise kilobyte limit you require.</p>
+            <ol style="margin-bottom: 2.5rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                <li>Select your heavy photograph or scan from your device securely.</li>
+                <li>In the Target Size box, enter specific targets such as "50" and select "KB".</li>
+                <li>Tap Compress. Our algorithm runs a highly sophisticated "Binary Search" to elegantly reduce the image step-by-step until it perfectly sneaks below your designated size limit.</li>
+            </ol>
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.5rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">How is this tool different from generic compressors?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Basic compressors offer "High/Medium/Low" sliders that force you to endlessly guess and download repeatedly. ToolNest actually accepts <strong>exact byte-size inputs</strong>, guaranteeing success on your first upload to strict platforms.</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">Is this offline and safe?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Yes. Our architecture processes the entirety of the file-size optimization using your computer's own memory rather than a remote cloud server.</p>
+            </div>
+        </div>
+
+        <footer class="footer" style="text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+            <div class="ad-placeholder" style="min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; background: rgba(0,0,0,0.05); border-radius: 8px; color: var(--text-secondary);"><!-- AdSense Display Ad unit placeholder here --></div>
+            <div style="margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="about.html" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">© 2026 ToolNest • Made with <i class="fas fa-heart"></i> for privacy</p>
+        </footer>
+    </div>
+    <script src="img-compress.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

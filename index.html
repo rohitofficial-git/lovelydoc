@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ToolNest - Professional PDF Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="gradient-bg">
+        <div class="gradient-1"></div>
+        <div class="gradient-2"></div>
+        <div class="gradient-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <span class="logo-text">Tool<span>Nest</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active" style="font-size: 0.85rem; padding: 0.5rem;">Compress</a>
+                <a href="merge.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Merge</a>
+                <a href="split.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Split</a>
+                <a href="img-to-pdf.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">JPG to PDF</a>
+                <a href="img-compress.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">IMG
+                    Compress</a>
+                <a href="img-resize.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Resize</a>
+                <a href="blog.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Blog</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i>
+                <span>Fast & Private • 100% Browser-Based</span>
+            </div>
+            <h1 class="hero-title">
+                Compress PDF Files
+                <span class="gradient-text">Instantly</span>
+            </h1>
+            <p class="hero-description">
+                Reduce PDF size up to 90% while maintaining professional quality.
+                <br>Your files never leave your device — completely private and secure.
+            </p>
+        </div>
+
+        <!-- Main Upload Card -->
+        <div class="upload-card" id="uploadArea">
+            <div class="upload-content">
+                <div class="upload-icon-wrapper">
+                    <div class="upload-icon-bg">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                </div>
+                <h3>Drop your PDF here</h3>
+                <p>or click to browse</p>
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+                <div class="file-formats">
+                    <span><i class="fas fa-check-circle"></i> PDF only</span>
+                    <span><i class="fas fa-chart-line"></i> Up to 100MB</span>
+                    <span><i class="fas fa-lock"></i> End-to-end private</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Info Card (Hidden initially) -->
+        <div class="file-card" id="fileCard" style="display: none;">
+            <div class="file-card-header">
+                <div class="file-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="file-info">
+                    <h4 id="fileName">document.pdf</h4>
+                    <p id="fileSize">2.5 MB</p>
+                </div>
+                <button class="remove-file" id="removeFile">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="file-preview" id="filePreview">
+                <canvas id="previewCanvas"></canvas>
+            </div>
+        </div>
+
+        <!-- Compression Controls (Hidden initially) -->
+        <div class="controls-card" id="controlsCard" style="display: none;">
+            <div class="controls-header">
+                <h3>Compression Settings</h3>
+                <p>Adjust to balance file size and quality</p>
+            </div>
+
+            <div class="target-size-section" id="targetSizeSection" style="display: block;">
+                <div class="target-size-control">
+                    <label>Target File Size:</label>
+                    <div class="target-input-group">
+                        <input type="number" id="targetSize" min="1" step="0.1" value="1">
+                        <select id="targetSizeUnit">
+                            <option value="KB">KB</option>
+                            <option value="MB" selected>MB</option>
+                        </select>
+                    </div>
+                    <p class="target-note">The compressor will automatically adjust quality to achieve this size</p>
+                </div>
+            </div>
+
+
+            <button class="compress-button" id="compressBtn">
+                <span>Compress PDF</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Result Card (Hidden initially) -->
+        <div class="result-card" id="resultCard" style="display: none;">
+            <div class="result-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Compression Complete!</h3>
+                <p>Your PDF has been optimized successfully</p>
+            </div>
+
+            <div class="size-comparison">
+                <div class="size-box original">
+                    <i class="fas fa-file"></i>
+                    <span>Original Size</span>
+                    <strong id="originalSize">0 MB</strong>
+                </div>
+                <div class="size-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="size-box compressed">
+                    <i class="fas fa-file-compress"></i>
+                    <span>Compressed Size</span>
+                    <strong id="compressedSize">0 MB</strong>
+                </div>
+            </div>
+
+            <div class="savings-badge" id="savedPercent">
+                <i class="fas fa-chart-line"></i>
+                <span>0% Saved</span>
+            </div>
+
+            <div class="compression-stats" id="compressionStats"></div>
+
+            <div class="result-actions">
+                <button class="btn-download" id="downloadBtn">
+                    <i class="fas fa-download"></i>
+                    <span>Download PDF</span>
+                </button>
+                <button class="btn-new" id="newFileBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Compress Another</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-card">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+                <h4>Compressing your PDF</h4>
+                <p id="loadingMessage">Analyzing file structure...</p>
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-text">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Presets Section -->
+        <div class="features-section" id="quickPresets">
+            <h2 class="section-title">Popular Compression Sizes</h2>
+            <div class="features-grid">
+                <div class="feature-card quick-preset" data-size="50" data-unit="KB" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Compress PDF to 50KB</h4>
+                    <p>Perfect for online job applications and strict form limits.</p>
+                </div>
+                <div class="feature-card quick-preset" data-size="100" data-unit="KB" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Compress PDF to 100KB</h4>
+                    <p>Reduce document size to 100KB for email attachments.</p>
+                </div>
+                <div class="feature-card quick-preset" data-size="150" data-unit="KB" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Compress PDF to 150KB</h4>
+                    <p>Recommended compression size for generic digital uploads.</p>
+                </div>
+                <div class="feature-card quick-preset" data-size="200" data-unit="KB" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Compress PDF to 200KB</h4>
+                    <p>Optimize your PDFs to 200KB without losing quality.</p>
+                </div>
+                <div class="feature-card quick-preset" data-size="500" data-unit="KB" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Compress PDF to 500KB</h4>
+                    <p>Ideal for multi-page documents and heavy images.</p>
+                </div>
+                <div class="feature-card quick-preset" data-size="1" data-unit="MB" style="cursor: pointer;">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Compress PDF to 1MB</h4>
+                    <p>A great balance of high quality and reduced file size.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="section-title">Why choose ToolNest?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>100% Private</h4>
+                    <p>Files never leave your device. No uploads, no servers, complete privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Lightning Fast</h4>
+                    <p>Process locally in your browser. No waiting in queues or upload times.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h4>Unlimited Usage</h4>
+                    <p>No limits, no subscriptions, no hidden fees. Compress as much as you want.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-simple"></i>
+                    </div>
+                    <h4>Up to 90% Reduction</h4>
+                    <p>Advanced algorithms achieve maximum compression without visible quality loss.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQs -->
+        <div class="features-section"
+            style="text-align: left; background: var(--bg-card); padding: 3rem; border-radius: 24px; margin-bottom: 3rem; box-shadow: var(--shadow-sm);">
+            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary); font-size: 1.8rem;">How to Compress a PDF File
+                to a Specific Size</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">Reducing your PDF file
+                size is essential when uploading documents to portals with strict size limits (like 50KB, 100KB, or
+                500KB). ToolNest uses an advanced browser-based compression engine to analyze your document and
+                selectively reduce image resolutions and strip unnecessary metadata without compromising the overall
+                readability. <strong>Follow these 3 simple steps:</strong></p>
+            <ol style="margin-bottom: 2.5rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                <li>Drag and drop your PDF into the upload box above, or select one from your device.</li>
+                <li>Enter your exact target size in kilobytes (KB) or megabytes (MB) using the input box or click one of
+                    our popular quick-presets.</li>
+                <li>Click the "Compress PDF" button. Everything happens securely inside your browser, and your newly
+                    compressed file will automatically download.</li>
+            </ol>
+
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.5rem;">Frequently Asked Questions
+                (FAQ)</h3>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">1. Are my files private and secure?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Absolutely. Unlike traditional online PDF
+                    compressors that upload your files to external servers, ToolNest runs entirely <strong>locally in
+                        your web browser</strong>. Your sensitive documents never leave your device, ensuring maximum
+                    privacy and compliance.</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">2. Can I compress a PDF to exactly 50KB
+                    or 100KB?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Yes! Our unique target-size algorithm
+                    automatically scales processing to hit your exact desired file weight threshold, making it the
+                    perfect tool for digital submissions, job applications, and government portal uploads.</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">3. Do I lose quality when shrinking a
+                    PDF?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Our engine searches for an optimal balance.
+                    For text-heavy documents, visual loss is practically imperceptible. If your document is extremely
+                    image-heavy, it compresses graphics efficiently, maintaining visual clarity for screens while
+                    dropping the file size drastically.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer"
+            style="text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+            <div class="ad-placeholder"
+                style="min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; background: rgba(0,0,0,0.05); border-radius: 8px; color: var(--text-secondary);">
+                <!-- AdSense Display Ad unit placeholder here --></div>
+            <div style="margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="about.html" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">© 2026 ToolNest • Made with <i
+                    class="fas fa-heart"></i> for privacy</p>
+        </footer>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent"
+        style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-card); padding: 1.5rem; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 9999; text-align: center; border-top: 1px solid var(--border-color);">
+        <p style="margin-bottom: 1rem; color: var(--text-primary); font-family: 'Inter', sans-serif;">We use cookies to
+            personalize content and ads, and to analyze our traffic. By continuing to use our site, you accept our <a
+                href="privacy.html" style="color: var(--accent-primary); text-decoration: underline;">Privacy
+                Policy</a>.</p>
+        <button
+            onclick="document.getElementById('cookieConsent').style.display='none'; localStorage.setItem('cookieAccepted', 'true');"
+            style="background: var(--accent-gradient); color: white; border: none; padding: 0.5rem 2rem; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: 'Inter', sans-serif;">Accept
+            & Continue</button>
+    </div>
+    <script>
+        if (!localStorage.getItem('cookieAccepted')) {
+            document.getElementById('cookieConsent').style.display = 'block';
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="script.js"></script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

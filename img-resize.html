@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Resize Image - ToolNest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="gradient-bg"><div class="gradient-1"></div><div class="gradient-2"></div><div class="gradient-3"></div></div>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo"><div class="logo-icon"><i class="fas fa-file-pdf"></i></div><span class="logo-text">Tool<span>Nest</span></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Compress</a>
+                <a href="merge.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Merge</a>
+                <a href="split.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Split</a>
+                <a href="img-to-pdf.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">JPG to PDF</a>
+                <a href="img-compress.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">IMG Compress</a>
+                <a href="img-resize.html" class="nav-link active" style="font-size: 0.85rem; padding: 0.5rem;">Resize</a>
+                <a href="blog.html" class="nav-link" style="font-size: 0.85rem; padding: 0.5rem;">Blog</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-badge"><i class="fas fa-expand-arrows-alt"></i><span>Custom Dimensions</span></div>
+            <h1 class="hero-title">Image <span class="gradient-text">Resizer</span></h1>
+            <p class="hero-description">Change the exact width and height of your images safely in your browser.</p>
+        </div>
+
+        <div class="upload-card" id="uploadArea">
+            <div class="upload-content">
+                <div class="upload-icon-wrapper"><div class="upload-icon-bg"><i class="fas fa-image"></i></div></div>
+                <h3>Select an image to resize</h3>
+                <input type="file" id="fileInput" accept="image/jpeg, image/png, image/webp" hidden>
+            </div>
+        </div>
+
+        <div id="controlsContainer" style="display: none; margin-bottom: 2rem;">
+            <div class="file-card">
+                <div class="file-card-header" style="margin-bottom: 0;">
+                    <div class="file-icon"><i class="fas fa-image"></i></div>
+                    <div class="file-info"><h4 id="fileName">...</h4><p id="fileResolution">0 x 0 px</p></div>
+                    <button id="removeFile" style="background: none; border: none; color: var(--error);"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <div class="controls-card" style="margin-top: 2rem;">
+                <h3>Dimensions (Pixels)</h3>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem; align-items: center;">
+                    <div style="flex: 1;">
+                        <label style="color: var(--text-secondary); font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Width</label>
+                        <input type="number" id="widthInput" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 2px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none;">
+                    </div>
+                    <div style="margin-top: 1.5rem; color: var(--text-secondary);"><i class="fas fa-times"></i></div>
+                    <div style="flex: 1;">
+                        <label style="color: var(--text-secondary); font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Height</label>
+                        <input type="number" id="heightInput" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 2px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); outline: none;">
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="aspectRatioCheck" checked style="width: 18px; height: 18px; accent-color: var(--accent-primary);">
+                    <label for="aspectRatioCheck" style="color: var(--text-primary); cursor: pointer;">Maintain original aspect ratio</label>
+                </div>
+
+                <button class="compress-button" id="resizeBtn" style="margin-top: 2rem;">
+                    <span>Resize Image</span><i class="fas fa-crop"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="result-card" id="resultCard" style="display: none;">
+            <div class="result-header">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Image Resized!</h3>
+            </div>
+            <div class="result-actions" style="margin-top: 2rem;">
+                <button class="btn-download" id="downloadBtn"><i class="fas fa-download"></i><span>Download Image</span></button>
+                <button class="btn-new" id="newFileBtn"><i class="fas fa-plus"></i><span>Resize Another</span></button>
+            </div>
+        </div>
+        
+        <!-- SEO Content & FAQs -->
+        <div class="features-section" style="text-align: left; background: var(--bg-card); padding: 3rem; border-radius: 24px; margin-bottom: 3rem; margin-top: 4rem; box-shadow: var(--shadow-sm);">
+            <h2 style="margin-bottom: 1.5rem; color: var(--text-primary); font-size: 1.8rem;">How to Resize an Image's Pixel Dimensions Expertly</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.6;">Adjusting the resolution width and height of an image is crucial when trying to format graphics for a banner, social media thumbnail, or a strict grid frame. ToolNest makes formatting entirely browser-based, rapid, and lossless.</p>
+            <ol style="margin-bottom: 2.5rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                <li>Upload your image. Wait exactly 0 seconds—the resolution is retrieved instantly offline.</li>
+                <li>Enter a custom Width target. If you leave the "Maintain aspect ratio" lock checked, the Height will symmetrically adjust itself seamlessly so nothing gets squished.</li>
+                <li>Export your newly resized, perfectly proportional JPG or PNG.</li>
+            </ol>
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.5rem;">Frequently Asked Questions (FAQ)</h3>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">What does 'Maintain aspect ratio' do?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Photographs naturally carry fixed proportions (like 16:9 or 4:3). Disabling aspect-ratio locking will result in "stretched" or heavily warped images when resizing. We auto-lock it by default to guarantee high-fidelity results perfectly.</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">Does this save the file locally?</h4>
+                <p style="color: var(--text-secondary); line-height: 1.6;">Absolutely. Like the rest of the ToolNest suite, scaling the artwork occurs through Javascript mathematics within your own machine, completely preventing private photo exploitation or network limits.</p>
+            </div>
+        </div>
+
+        <footer class="footer" style="text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+            <div class="ad-placeholder" style="min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; background: rgba(0,0,0,0.05); border-radius: 8px; color: var(--text-secondary);"><!-- AdSense Display Ad unit placeholder here --></div>
+            <div style="margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="about.html" style="color: var(--text-secondary); text-decoration: none;">About Us</a>
+                <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact</a>
+                <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+                <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">© 2026 ToolNest • Made with <i class="fas fa-heart"></i> for privacy</p>
+        </footer>
+    </div>
+    <script src="img-resize.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>
