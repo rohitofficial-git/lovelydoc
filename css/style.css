@@ -187,6 +187,26 @@ body {
     margin: 0 auto 40px;
 }
 
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.check-icon, .trust-icon {
+    font-size: 1.2rem;
+}
+
 /* Tabs */
 .category-tabs {
     display: flex;
