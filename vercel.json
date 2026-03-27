@@ -7,7 +7,8 @@
         { "source": "/reduce-image-size-100kb", "destination": "/tools/reduce-image-size-100kb.html" },
         { "source": "/image-compressor", "destination": "/tools/image-compressor.html" },
         { "source": "/image-resizer", "destination": "/tools/image-resizer.html" },
-        { "source": "/image-to-pdf", "destination": "/tools/image-to-pdf.html" }
+        { "source": "/image-to-pdf", "destination": "/tools/image-to-pdf.html" },
+        { "source": "/image-enhancer", "destination": "/tools/image-enhancer.html" }
     ],
     "headers": [
         {
