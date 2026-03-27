@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Compressor – Reduce PDF File Size Free | ToolzNest</title>
+    <meta name="description" content="Compress PDF files and reduce their size for easy sharing. Free, fast, and secure online PDF compressor tool by Toolznest. No watermark.">
+    <meta name="keywords" content="pdf compressor, compress pdf, reduce pdf size, pdf compression free">
+    <link rel="canonical" href="https://toolznest.com/tools/pdf-compressor">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">Toolz<span class="highlight">nest</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#tools" class="active">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="tool-page-header">
+            <h1>Simple PDF Compressor – Reduce PDF Size Free</h1>
+            <p>Reduce your PDF file size for easier sharing and storage. Quick, secure, and no watermark.</p>
+        </div>
+
+        <div class="tool-workspace">
+            <div class="upload-area" id="upload-area">
+                <div class="upload-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                </div>
+                <span class="upload-label">Click or drag & drop your PDF here</span>
+                <span class="text-muted">Supports PDF files</span>
+                <input type="file" id="file-input" class="hidden-input" accept="application/pdf">
+            </div>
+
+            <div class="settings-panel" id="settings-panel">
+                <div class="form-group">
+                    <label for="quality">Compression Level: <span id="quality-val">Medium</span></label>
+                    <input type="range" id="quality" class="form-control" min="1" max="3" value="2" step="1">
+                    <small style="color: var(--text-muted);">1 = Low (smaller file), 3 = High (better quality)</small>
+                </div>
+                <button id="process-btn" class="btn btn-primary" style="width: 100%">Compress PDF</button>
+            </div>
+
+            <div class="result-area" id="result-area">
+                <div class="file-stats">
+                    <div class="stat-box">
+                        <small>Original Size</small>
+                        <div id="original-size" style="font-weight: 600; font-size: 1.2rem;">0 KB</div>
+                    </div>
+                    <div class="stat-box">
+                        <small>New Size</small>
+                        <div id="new-size" style="font-weight: 600; font-size: 1.2rem; color: var(--primary);">0 KB</div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <a id="download-btn" class="btn btn-success btn-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download Compressed PDF
+                    </a>
+                    <button class="btn btn-outline btn-icon" onclick="location.reload()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        Compress Another
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQ -->
+        <article class="seo-content">
+            <h2>Free Online PDF Compressor – No Watermark</h2>
+            <p>Need to email a large PDF or upload it to a website with a size limit? Our Simple PDF Compressor helps you reduce your PDF file sizes quickly. This basic compressor works by re-rendering embedded images at a lower resolution, which is one of the most effective ways to shrink PDFs.</p>
+            <p>For best results, this tool is ideal for PDFs containing images, scans, or photos. Text-only PDFs are already quite compact and may not see significant size reduction.</p>
+
+            <div class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">How does this PDF compressor work?</div>
+                    <div class="faq-answer">It reads the PDF, extracts embedded images, re-renders them at a reduced quality, and repackages the result. This is a simple, client-side approach ideal for image-heavy PDFs.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Will I lose text quality?</div>
+                    <div class="faq-answer">No. Text elements remain intact. Only embedded images are recompressed.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is it safe to use?</div>
+                    <div class="faq-answer">Absolutely. Your file is processed entirely in your browser. Nothing is ever uploaded.</div>
+                </div>
+            </div>
+
+            <div class="rating-ui" id="rating-ui">
+                <h3>Rate this tool</h3>
+                <div class="stars" id="stars-container">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem;"></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Toolz<span style="color: var(--primary);">nest</span></h3>
+                <p>Free, fast, and secure tools for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="compress-pdf-online-free.html">Compress PDF</a></li>
+                    <li><a href="merge-pdf-online.html">Merge PDF</a></li>
+                    <li><a href="background-remover-free.html">Background Remover</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Toolznest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pdf-compressor.js"></script>
+</body>
+</html>

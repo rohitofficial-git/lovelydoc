@@ -1,0 +1,36 @@
+{
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "rewrites": [
+        { "source": "/compress-pdf-online-free", "destination": "/tools/compress-pdf-online-free.html" },
+        { "source": "/merge-pdf-online", "destination": "/tools/merge-pdf-online.html" },
+        { "source": "/reduce-image-size-100kb", "destination": "/tools/reduce-image-size-100kb.html" },
+        { "source": "/background-remover-free", "destination": "/tools/background-remover-free.html" },
+        { "source": "/image-compressor", "destination": "/tools/image-compressor.html" },
+        { "source": "/image-resizer", "destination": "/tools/image-resizer.html" },
+        { "source": "/image-to-pdf", "destination": "/tools/image-to-pdf.html" },
+        { "source": "/pdf-compressor", "destination": "/tools/pdf-compressor.html" }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                { "key": "X-Content-Type-Options", "value": "nosniff" },
+                { "key": "X-Frame-Options", "value": "DENY" },
+                { "key": "X-XSS-Protection", "value": "1; mode=block" }
+            ]
+        },
+        {
+            "source": "/css/(.*)",
+            "headers": [
+                { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+            ]
+        },
+        {
+            "source": "/js/(.*)",
+            "headers": [
+                { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+            ]
+        }
+    ]
+}

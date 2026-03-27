@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor – Reduce Image Size Free Online | ToolzNest</title>
+    <meta name="description" content="Compress your images quickly and reduce file size without losing quality. Free online image compressor for JPG, PNG, WEBP files. No watermark, no login.">
+    <meta name="keywords" content="image compressor, compress image online, reduce image size, image compression free">
+    <link rel="canonical" href="https://toolznest.com/tools/image-compressor">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">Toolz<span class="highlight">nest</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#tools" class="active">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="tool-page-header">
+            <h1>Image Compressor – Reduce Image Size Free</h1>
+            <p>Reduce image file size quickly without losing quality. All processing happens entirely in your browser.</p>
+        </div>
+
+        <div class="tool-workspace">
+            <div class="upload-area" id="upload-area">
+                <div class="upload-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </div>
+                <span class="upload-label">Click or drag & drop image here</span>
+                <span class="text-muted">Supports JPG, PNG, WEBP</span>
+                <input type="file" id="file-input" class="hidden-input" accept="image/jpeg, image/png, image/webp">
+            </div>
+
+            <div class="settings-panel" id="settings-panel">
+                <div class="form-group">
+                    <label for="quality">Compression Quality (0-100%): <span id="quality-val">80</span>%</label>
+                    <input type="range" id="quality" class="form-control" min="1" max="100" value="80">
+                </div>
+                <button id="process-btn" class="btn btn-primary" style="width: 100%">Compress Image</button>
+            </div>
+
+            <div class="result-area" id="result-area">
+                <div class="file-stats">
+                    <div class="stat-box">
+                        <small>Original Size</small>
+                        <div id="original-size" style="font-weight: 600; font-size: 1.2rem;">0 KB</div>
+                    </div>
+                    <div class="stat-box">
+                        <small>New Size</small>
+                        <div id="new-size" style="font-weight: 600; font-size: 1.2rem; color: var(--primary);">0 KB</div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <a id="download-btn" class="btn btn-success btn-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download Compressed Image
+                    </a>
+                    <button class="btn btn-outline btn-icon" onclick="location.reload()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        Compress Another
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQ -->
+        <article class="seo-content">
+            <h2>Free Online Image Compressor – No Watermark</h2>
+            <p>Welcome to the fast and secure Image Compressor by Toolznest. Whether you are aiming to free up storage space, enhance website load times, or simply share memories faster with friends and family, our tool ensures your images are perfectly compressed without noticeable loss in quality.</p>
+            <p>Unlike other platforms, our Image Compressor runs completely within your device's browser. This means your private photos never hit our servers—giving you unmatched privacy and security alongside lightning-fast speeds.</p>
+
+            <div class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">Will my image lose quality?</div>
+                    <div class="faq-answer">Our compressor uses an intelligent algorithm to significantly reduce file size while maintaining high visual fidelity.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are my files uploaded to a server?</div>
+                    <div class="faq-answer">No. All file processing happens locally on your device ensuring complete privacy.</div>
+                </div>
+            </div>
+
+            <div class="rating-ui" id="rating-ui">
+                <h3>Rate this tool</h3>
+                <div class="stars" id="stars-container">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem;"></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Toolz<span style="color: var(--primary);">nest</span></h3>
+                <p>Free, fast, and secure tools for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="compress-pdf-online-free.html">Compress PDF</a></li>
+                    <li><a href="reduce-image-size-100kb.html">Reduce Image Size</a></li>
+                    <li><a href="background-remover-free.html">Background Remover</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Toolznest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/image-compressor.js"></script>
+</body>
+</html>
