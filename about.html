@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Toolznest</title>
-    <meta name="description" content="Learn about Toolznest — a free, fast, and privacy-first platform for online PDF and image tools.">
+    <title>About - LovelyDoc</title>
+    <meta name="description" content="Learn about LovelyDoc — a free, fast, and privacy-first platform for online PDF and image tools.">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo">Toolz<span class="highlight">nest</span></a>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="var(--primary)" />
+                    <path d="M4 16L16 22L28 16" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M4 22L16 28L28 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Lovely<span class="highlight">Doc</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#tools">Tools</a></li>
                 <li><a href="about.html" class="active">About</a></li>
+                <li class="mobile-only"><button class="theme-toggle-mobile">Switch to Dark Mode</button></li>
             </ul>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search tools..." id="tool-search">
+                </div>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+                <div class="menu-toggle" id="menu-toggle">☰</div>
+            </div>
         </div>
     </nav>
 
     <main class="container" style="padding: 60px 20px;">
         <div style="max-width: 800px; margin: 0 auto;">
-            <h1>About Toolznest</h1>
+            <h1>About LovelyDoc</h1>
 
             <section style="margin-top: 40px;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 40px;">
@@ -52,8 +68,8 @@
 
             <section style="margin-top: 30px;">
                 <h2>Our Mission</h2>
-                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">Toolznest was created with a simple goal: make everyday file operations painless, free, and private. We believe you shouldn't have to sign up for an account, wait in a queue, or worry about your files ending up on someone else's server just to compress an image or convert a file.</p>
-                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">Every tool on Toolznest operates entirely client-side — meaning all processing happens right inside your web browser. Your files are never uploaded anywhere. This makes our tools incredibly fast and inherently private.</p>
+                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">LovelyDoc was created with a simple goal: make everyday file operations painless, free, and private. We believe you shouldn't have to sign up for an account, wait in a queue, or worry about your files ending up on someone else's server just to compress an image or convert a file.</p>
+                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">Every tool on LovelyDoc operates entirely client-side — meaning all processing happens right inside your web browser. Your files are never uploaded anywhere. This makes our tools incredibly fast and inherently private.</p>
             </section>
 
             <section style="margin-top: 40px;">
@@ -76,7 +92,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <h3>Toolz<span>nest</span></h3>
+                <h3>Lovely<span>Doc</span></h3>
                 <p>Free, fast, and secure tools for everyone.</p>
             </div>
             <div class="footer-links">
@@ -87,7 +103,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Toolznest. All rights reserved.</p>
+            <p>&copy; 2026 LovelyDoc. All rights reserved.</p>
         </div>
     </footer>
 </body>

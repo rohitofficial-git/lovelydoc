@@ -18,6 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
+        });
+    }
+
     // Handle File Selection
     window.setupDragAndDrop('upload-area', 'file-input', (file) => {
         if (!file.type.match(/image\/(jpeg|png|webp)/)) {
@@ -27,7 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
         currentFile = file;
         
         // Update UI
-        document.querySelector('.upload-label').textContent = file.name;
+        const uploadArea = document.getElementById('upload-area');
+        const uploadIcon = uploadArea.querySelector('.upload-icon');
+        const uploadLabel = uploadArea.querySelector('.upload-label');
+        
+        // Show Image Preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            uploadIcon.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+            uploadIcon.style.border = "none";
+        };
+        reader.readAsDataURL(file);
+
+        uploadLabel.textContent = file.name;
         settingsPanel.style.display = 'block';
         resultArea.style.display = 'none';
         
@@ -40,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
         processBtn.addEventListener('click', async () => {
             if(!currentFile) return;
             
-            processingUI.show('Processing your file…', 'Compressing your image');
+            processingUI.show('Processing your file...', 'Compressing your image');
+            processBtn.classList.add('loading');
             processBtn.disabled = true;
 
             const quality = parseInt(qualitySlider.value) / 100;
@@ -87,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             resultArea.style.display = 'block';
                         }, 400);
 
+                        processBtn.classList.remove('loading');
                         processBtn.disabled = false;
                     };
                 };

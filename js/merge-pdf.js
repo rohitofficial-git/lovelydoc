@@ -102,8 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Update upload label
+        // Update upload label and icon
         document.querySelector('.upload-label').textContent = `${pdfFiles.length} PDF file(s) selected`;
+        
+        const uploadArea = document.getElementById('upload-area');
+        const uploadIcon = uploadArea.querySelector('.upload-icon');
+        uploadIcon.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ef4444;"><path d="M7 8h10M7 12h10M7 16h6"></path><rect x="3" y="4" width="18" height="16" rx="2"></rect></svg>`;
+        uploadIcon.style.background = "#fee2e2";
     }
 
     // Merge PDFs
@@ -114,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            processingUI.show('Processing your file…', 'Merging PDFs – this may take a moment');
+            processingUI.show('Processing your file...', 'Merging PDFs – this may take a moment');
+            processBtn.classList.add('loading');
             processBtn.disabled = true;
 
             try {
@@ -152,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultArea.style.display = 'block';
                 }, 500);
 
+                processBtn.classList.remove('loading');
                 processBtn.disabled = false;
 
             } catch (e) {
@@ -160,6 +167,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred while merging PDFs. Some files may be encrypted or malformed.');
                 processBtn.disabled = false;
             }
+        });
+    }
+
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
         });
     }
 });

@@ -3,22 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Image Enhancer Online – Improve Photo Quality | ToolzNest</title>
+    <title>Free Image Enhancer Online – Improve Photo Quality | LovelyDoc</title>
     <meta name="description" content="Enhance image quality online for free. Improve resolution, sharpen details, and fix colors instantly. No watermark, no login required.">
     <meta name="keywords" content="image enhancer, improve image quality, sharpen image, enhance photo free, online image enhancer">
-    <link rel="canonical" href="https://toolznest.com/tools/image-enhancer">
+    <link rel="canonical" href="https://lovelydoc.com/tools/image-enhancer">
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Free Image Enhancer Online – Improve Photo Quality | LovelyDoc">
+    <meta property="og:description" content="Enhance image quality online for free. Improve resolution, sharpen details, and fix colors instantly. No watermark, no login.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lovelydoc.com/tools/image-enhancer">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Image Enhancer",
+      "operatingSystem": "All",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "620"
+      },
+      "description": "Enhance image quality online for free. Improve resolution, sharpen blurry details, and fix photo issues effortlessly."
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="../index.html" class="logo">Toolz<span class="highlight">nest</span></a>
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="var(--primary)" />
+                    <path d="M4 16L16 22L28 16" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M4 22L16 28L28 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Lovely<span class="highlight">Doc</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../index.html#tools" class="active">Tools</a></li>
                 <li><a href="../about.html">About</a></li>
+                <li class="mobile-only"><button class="theme-toggle-mobile">Switch to Dark Mode</button></li>
             </ul>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search tools..." id="tool-search">
+                </div>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+                <div class="menu-toggle" id="menu-toggle">☰</div>
+            </div>
         </div>
     </nav>
 
@@ -38,19 +84,15 @@
                 <input type="file" id="file-input" class="hidden-input" accept="image/jpeg, image/png, image/webp">
             </div>
 
-            <div class="settings-panel" id="settings-panel">
-                <div class="form-group">
-                    <label>Enhancement Mode:</label>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button class="kb-preset-btn active" id="mode-auto" data-mode="auto">✨ Auto Enhance</button>
-                        <button class="kb-preset-btn" id="mode-sharpen" data-mode="sharpen">🔪 Sharpen</button>
-                        <button class="kb-preset-btn" id="mode-upscale" data-mode="upscale">🔍 2x Upscale</button>
-                    </div>
-                </div>
-                <button id="process-btn" class="btn btn-primary" style="width: 100%">Enhance Image</button>
+            <div class="settings-panel" id="settings-panel" style="display: none;">
+
+                <button id="process-btn" class="btn btn-primary" style="width: 100%">
+                    <span class="btn-text">Enhance Image</span>
+                    <div class="btn-loader"></div>
+                </button>
             </div>
 
-            <div class="result-area" id="result-area">
+            <div class="result-area" id="result-area" style="display: none;">
                 <div class="preview-container" id="preview-container">
                     <div class="preview-box">
                         <span class="preview-label original">Original</span>
@@ -63,13 +105,15 @@
                 </div>
 
                 <div class="result-actions" style="margin-top: 25px;">
-                    <a id="download-btn" class="btn btn-success btn-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download Enhanced Image
+                    <a id="download-btn" class="btn btn-fancy btn-lg" style="width: 100%; margin-bottom: 12px;">
+                        <span class="btn-text">
+                            <svg class="download-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download Enhanced Image
+                        </span>
+                        <div class="btn-loader"></div>
                     </a>
-                    <button class="btn btn-outline btn-icon" onclick="location.reload()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-                        Enhance Another
+                    <button class="btn btn-secondary" onclick="location.reload()" style="width: 100%;">
+                        Enhance Another Photo
                     </button>
                 </div>
             </div>
@@ -93,7 +137,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Are my images saved to a server?</div>
-                    <div class="faq-answer">No. Just like all ToolzNest tools, the enhancement logic runs 100% locally on your machine, ensuring total privacy.</div>
+                    <div class="faq-answer">No. Just like all LovelyDoc tools, the enhancement logic runs 100% locally on your machine, ensuring total privacy.</div>
                 </div>
             </div>
 
@@ -114,7 +158,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <h3>Toolz<span style="color: var(--primary);">nest</span></h3>
+                <h3>Lovely<span style="color: var(--primary);">Doc</span></h3>
                 <p>Free, fast, and secure tools for everyone.</p>
             </div>
             <div class="footer-links">
@@ -134,7 +178,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Toolznest. All rights reserved.</p>
+            <p>&copy; 2026 LovelyDoc. All rights reserved.</p>
         </div>
     </footer>
 

@@ -4,22 +4,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const settingsPanel = document.getElementById('settings-panel');
     const resultArea = document.getElementById('result-area');
-    const qualitySlider = document.getElementById('quality');
-    const qualityVal = document.getElementById('quality-val');
     const processBtn = document.getElementById('process-btn');
     const downloadBtn = document.getElementById('download-btn');
-
     const origSizeEl = document.getElementById('original-size');
     const newSizeEl = document.getElementById('new-size');
     const savedPercentEl = document.getElementById('saved-percent');
 
-    const labels = { 1: 'Maximum Compression', 2: 'Medium', 3: 'Best Quality' };
+    const compressionOptions = document.querySelectorAll('.compression-option');
+    let selectedQuality = 2; // Default to medium
 
-    if (qualitySlider && qualityVal) {
-        qualitySlider.addEventListener('input', (e) => {
-            qualityVal.textContent = labels[e.target.value] || 'Medium';
+    compressionOptions.forEach(opt => {
+        opt.addEventListener('click', () => {
+            compressionOptions.forEach(o => o.classList.remove('active'));
+            opt.classList.add('active');
+            selectedQuality = parseInt(opt.getAttribute('data-value'));
         });
-    }
+    });
+
+
 
     // Handle File Selection
     window.setupDragAndDrop('upload-area', 'file-input', (file) => {
@@ -28,10 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         currentFile = file;
+
+        // Update UI Visibility
+        const uploadArea = document.getElementById('upload-area');
+        const uploadIcon = uploadArea.querySelector('.upload-icon');
+        uploadIcon.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ef4444;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><text x="6" y="19" font-size="5" font-family="Inter" font-weight="900" fill="currentColor">PDF</text></svg>`;
+        uploadIcon.style.background = "#fee2e2";
+
         document.querySelector('.upload-label').textContent = file.name;
-        origSizeEl.textContent = formatBytes(file.size);
         settingsPanel.style.display = 'block';
         resultArea.style.display = 'none';
+        
+        // Show original size
+        origSizeEl.textContent = formatBytes(file.size);
     });
 
     // Process PDF
@@ -42,13 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
             processingUI.show('Processing your file…', 'Compressing PDF – this may take a moment');
             const progress = processingUI.simulateProgress(3000);
 
+            processBtn.classList.add('loading');
             processBtn.disabled = true;
 
             try {
                 const arrayBuffer = await currentFile.arrayBuffer();
                 const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
 
-                const qualityLevel = parseInt(qualitySlider.value);
+                const qualityLevel = selectedQuality;
                 const pages = pdfDoc.getPages();
 
                 // Create new optimized PDF
@@ -84,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultArea.style.display = 'block';
                 }, 500);
 
+                processBtn.classList.remove('loading');
                 processBtn.disabled = false;
 
             } catch (e) {
@@ -92,6 +105,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred during PDF compression. The PDF may be encrypted or malformed.');
                 processBtn.disabled = false;
             }
+        });
+    }
+
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            // Simulate preparation/download start
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
         });
     }
 });

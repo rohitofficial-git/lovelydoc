@@ -27,9 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
         fileType = file.type;
         document.querySelector('.upload-label').textContent = file.name;
         
-        // Load image to get dimensions
+        // Load image to get dimensions and preview
         const reader = new FileReader();
         reader.onload = (e) => {
+            // Update Preview Icon
+            const uploadArea = document.getElementById('upload-area');
+            const uploadIcon = uploadArea.querySelector('.upload-icon');
+            uploadIcon.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+            uploadIcon.style.border = "none";
+
             const img = new Image();
             img.onload = () => {
                 currentImage = img;
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            processBtn.textContent = 'Resizing...';
+            processBtn.classList.add('loading');
             processBtn.disabled = true;
 
             setTimeout(() => {
@@ -100,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     downloadBtn.href = dataUrl;
                     downloadBtn.download = 'resized_' + fileName;
                     
-                    processBtn.textContent = 'Resize Image';
+                    processBtn.classList.remove('loading');
                     processBtn.disabled = false;
                 } catch(e) {
                     console.error(e);
@@ -109,6 +115,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     processBtn.disabled = false;
                 }
             }, 100);
+        });
+    }
+
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
         });
     }
 });

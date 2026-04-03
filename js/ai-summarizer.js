@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        processBtn.classList.add('loading');
         processBtn.disabled = true;
-        processBtn.textContent = 'Summarizing...';
         output.value = '';
 
         setTimeout(() => {
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 i++;
                 if (i >= fakeResponse.length) {
                     clearInterval(typeWriter);
+                    processBtn.classList.remove('loading');
                     processBtn.disabled = false;
-                    processBtn.textContent = 'Summarize';
                 }
             }, 30);
 

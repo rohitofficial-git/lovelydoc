@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         currentFile = file;
+        
+        // Update UI Icon
+        const uploadArea = document.getElementById('upload-area');
+        const uploadIcon = uploadArea.querySelector('.upload-icon');
+        uploadIcon.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ef4444;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><text x="6" y="19" font-size="5" font-family="Inter" font-weight="900" fill="currentColor">PDF</text></svg>`;
+        uploadIcon.style.background = "#fee2e2";
+
         document.querySelector('.upload-label').textContent = file.name;
         
         try {
@@ -42,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         processingUI.show('Splitting PDF...', 'Extracting requested pages');
+        processBtn.classList.add('loading');
         processBtn.disabled = true;
 
         try {
@@ -91,9 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
             downloadBtn.href = url;
             downloadBtn.download = `split_${currentFile.name}`;
 
-            processingUI.setProgress(100);
             setTimeout(() => {
                 processingUI.hide();
+                processBtn.classList.remove('loading');
+                processBtn.disabled = false;
                 resultArea.style.display = 'block';
                 settingsPanel.style.display = 'none';
             }, 400);
@@ -103,7 +112,23 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('An error occurred splitting the PDF.');
             processingUI.hide();
         } finally {
+            processBtn.classList.remove('loading');
             processBtn.disabled = false;
         }
     });
+
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
+        });
+    }
 });

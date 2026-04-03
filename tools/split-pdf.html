@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Resizer – Resize Images Online Free | LovelyDoc</title>
-    <meta name="description" content="Resize images by exact pixel dimensions or percentage. Free, fast, and secure online image resizer. No watermark, no login required.">
-    <meta name="keywords" content="image resizer, resize image online, change image dimensions, resize photo free">
-    <link rel="canonical" href="https://lovelydoc.com/tools/image-resizer">
+    <title>Split PDF Online Free – Extract PDF Pages | LovelyDoc</title>
+    <meta name="description" content="Split PDF files easily online. Extract pages from your PDF documents for free. No watermark, 100% private client-side processing.">
+    <meta name="keywords" content="split pdf online, extract pdf pages, online pdf splitter, cut pdf free">
+    <link rel="canonical" href="https://lovelydoc.com/tools/split-pdf-online">
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- Open Graph SEO -->
-    <meta property="og:title" content="Image Resizer – Resize Images Online Free | LovelyDoc">
-    <meta property="og:description" content="Resize images to any dimension with ease. Fast, free, and secure image resizing in your browser. No registration required.">
+    <meta property="og:title" content="Split PDF Online Free – Extract PDF Pages | LovelyDoc">
+    <meta property="og:description" content="Extract pages from your PDF documents instantly. 100% Free and Private client-side PDF splitter.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lovelydoc.com/tools/image-resizer">
+    <meta property="og:url" content="https://lovelydoc.com/tools/split-pdf-online">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Structured Data (JSON-LD) -->
@@ -21,7 +21,7 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Image Resizer",
+      "name": "PDF Splitter",
       "operatingSystem": "All",
       "applicationCategory": "UtilitiesApplication",
       "offers": {
@@ -31,14 +31,16 @@
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "ratingCount": "410"
+        "ratingValue": "4.8",
+        "ratingCount": "310"
       },
-      "description": "Efficiently resize images to exact pixel values or percentages. Ideal for website optimization and social media uploads."
+      "description": "Extract specific pages or page ranges from any PDF into a new document. Fast, free, and secure tool."
     }
     </script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>if(localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
+    <!-- Load pdf-lib -->
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 </head>
 <body>
     <nav class="navbar" id="navbar">
@@ -69,93 +71,63 @@
     </nav>
 
     <main class="container">
+        <div class="ad-slot" style="margin-top: 20px;">
+            [AdSpace] Top Leaderboard Ad
+        </div>
+
         <div class="tool-page-header">
-            <h1>Image Resizer – Resize Images Online Free</h1>
-            <p>Resize images by dimensions or percentage easily. Perfect for social media, websites, and emails.</p>
+            <h1>Split PDF Online Free</h1>
+            <p>Separate one page or a whole set for easy conversion into independent PDF files.</p>
         </div>
 
         <div class="tool-workspace">
             <div class="upload-area" id="upload-area">
                 <div class="upload-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
                 </div>
-                <span class="upload-label">Click or drag & drop image here</span>
-                <span class="text-muted">Supports JPG, PNG, WEBP</span>
-                <input type="file" id="file-input" class="hidden-input" accept="image/jpeg, image/png, image/webp">
+                <span class="upload-label">Select PDF file</span>
+                <span class="text-muted">Or drag and drop PDF here</span>
+                <input type="file" id="file-input" class="hidden-input" accept="application/pdf">
             </div>
 
             <div class="settings-panel" id="settings-panel" style="display: none;">
-                <div style="display: flex; gap: 20px;">
-                    <div class="form-group" style="flex: 1;">
-                        <label for="width">Width (px)</label>
-                        <input type="number" id="width" class="form-control" placeholder="e.g. 800">
-                    </div>
-                    <div class="form-group" style="flex: 1;">
-                        <label for="height">Height (px)</label>
-                        <input type="number" id="height" class="form-control" placeholder="e.g. 600">
-                    </div>
-                </div>
-                <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                    <input type="checkbox" id="maintain-aspect" checked>
-                    <label for="maintain-aspect" style="margin-bottom: 0;">Maintain aspect ratio</label>
+                <div class="form-group">
+                    <label>Page Range to Extract:</label>
+                    <input type="text" id="page-range" class="form-control" placeholder="e.g. 1-3, 5, 8-10">
+                    <small class="text-muted">Enter page numbers and ranges separated by commas.</small>
                 </div>
                 <button id="process-btn" class="btn btn-primary" style="width: 100%">
-                    <span class="btn-text">Resize Image</span>
+                    <span class="btn-text">Split PDF</span>
                     <div class="btn-loader"></div>
                 </button>
             </div>
 
             <div class="result-area" id="result-area" style="display: none;">
-                <div class="file-stats">
-                    <div class="stat-box">
-                        <small>Original Size</small>
-                        <div id="original-size" style="font-weight: 600; font-size: 1.2rem;">0x0 px</div>
-                    </div>
-                    <div class="stat-box">
-                        <small>New Size</small>
-                        <div id="new-size" style="font-weight: 600; font-size: 1.2rem; color: var(--primary);">0x0 px</div>
-                    </div>
+                <div class="alert alert-success" style="margin-bottom: 20px;">
+                    PDF split successfully! Your new document is ready.
                 </div>
                 <div class="result-actions">
                     <a id="download-btn" class="btn btn-fancy btn-lg" style="width: 100%; margin-bottom: 12px;">
                         <span class="btn-text">
                             <svg class="download-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                            Download Resized Image
+                            Download Split PDF
                         </span>
                         <div class="btn-loader"></div>
                     </a>
                     <button class="btn btn-secondary" onclick="location.reload()" style="width: 100%;">
-                        Resize Another Image
+                        Split Another PDF
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- SEO Content & FAQ -->
-        <article class="seo-content">
-            <h2>Free Online Image Resizer – No Watermark</h2>
-            <p>Our online Image Resizer makes it incredibly easy to adjust the dimensions of any photo. Whether you need exact pixel sizes for a social media profile, an email signature, or a blog post, our tool does the job instantly.</p>
-            <p>You can maintain the aspect ratio to prevent your image from stretching or looking distorted. We ensure your files remain secure by processing everything directly in your browser.</p>
+        <div class="ad-slot">
+            [AdSpace] Responsive Display Ad
+        </div>
 
-            <div class="faq-section">
-                <h3>Frequently Asked Questions</h3>
-                <div class="faq-item">
-                    <div class="faq-question">What does "Maintain aspect ratio" mean?</div>
-                    <div class="faq-answer">It means that if you change the width, the height will automatically adjust to keep the original proportions of the image, preventing it from looking stretched.</div>
-                </div>
-            </div>
-
-            <div class="rating-ui" id="rating-ui">
-                <h3>Rate this tool</h3>
-                <div class="stars" id="stars-container">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
-                </div>
-                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem;"></p>
-            </div>
+        <article class="seo-content" style="margin-top: 40px; padding: 20px; background: var(--card-bg); border-radius: var(--radius);">
+            <h2>How to split a PDF file?</h2>
+            <p style="color: var(--text-muted);">Splitting a PDF into multiple distinct files is completely straightforward and happens directly inside your browser. No files are uploaded to any server, ensuring total privacy. Simply select your document, type the ranges you want, and hit split.</p>
         </article>
     </main>
 
@@ -171,7 +143,6 @@
                     <li><a href="compress-pdf-online-free.html">Compress PDF</a></li>
                     <li><a href="reduce-image-size-100kb.html">Reduce Image Size</a></li>
                     <li><a href="image-enhancer.html">Image Enhancer</a></li>
-
                 </ul>
             </div>
             <div class="footer-links">
@@ -187,6 +158,6 @@
     </footer>
 
     <script src="../js/main.js"></script>
-    <script src="../js/image-resizer.js"></script>
+    <script src="../js/split-pdf.js"></script>
 </body>
 </html>

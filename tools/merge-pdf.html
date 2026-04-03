@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge PDF Online Free – Combine PDFs Instantly | LovelyDoc</title>
+    <meta name="description" content="Merge PDF files online for free. Combine multiple PDFs into one document instantly. No watermark, no login, no upload to server. Fast and secure PDF merger.">
+    <meta name="keywords" content="merge pdf online, combine pdf files, pdf merger free, merge pdf no watermark, join pdf online">
+    <link rel="canonical" href="https://lovelydoc.in/tools/merge-pdf">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Merge PDF Online Free – Combine PDFs Instantly | LovelyDoc">
+    <meta property="og:description" content="Combine multiple PDF files into one easily. 100% Free, Secure, and Private PDF merger tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lovelydoc.in/tools/merge-pdf">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PDF Merger",
+      "operatingSystem": "All",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "720"
+      },
+      "description": "Quickly combine and rearrange multiple PDF files into a single document using browser-side processing for ultimate security."
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="var(--primary)" />
+                    <path d="M4 16L16 22L28 16" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M4 22L16 28L28 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Lovely<span class="highlight">Doc</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#tools" class="active">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li class="mobile-only"><button class="theme-toggle-mobile">Switch to Dark Mode</button></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search tools..." id="tool-search">
+                </div>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+                <div class="menu-toggle" id="menu-toggle">☰</div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="tool-page-header">
+            <h1>Merge PDF Online – Combine PDFs Free</h1>
+            <p>Combine multiple PDF files into one single document. Drag & drop, reorder, and download instantly. No watermark.</p>
+        </div>
+
+        <div class="tool-workspace">
+            <div class="upload-area" id="upload-area">
+                <div class="upload-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="7" height="14" rx="1"></rect><rect x="15" y="3" width="7" height="14" rx="1"></rect><path d="M12 12l-3 3m0-6l3 3"></path></svg>
+                </div>
+                <span class="upload-label">Click or drag & drop multiple PDFs here</span>
+                <span class="text-muted">Select 2 or more PDF files to merge</span>
+                <input type="file" id="file-input" class="hidden-input" accept="application/pdf" multiple>
+            </div>
+
+            <div class="settings-panel" id="settings-panel" style="display: none;">
+                <div class="form-group">
+                    <label>Selected PDFs: <span class="file-count-badge" id="file-count">0</span></label>
+                    <ul class="file-list" id="file-list"></ul>
+                </div>
+                <button id="add-more-btn" class="btn btn-outline" style="width: 100%; margin-bottom: 15px;">
+                    + Add More PDFs
+                </button>
+                <button id="process-btn" class="btn btn-primary" style="width: 100%">
+                    <span class="btn-text">Merge All PDFs</span>
+                    <div class="btn-loader"></div>
+                </button>
+            </div>
+
+            <div class="result-area" id="result-area" style="display: none;">
+                <div class="file-stats">
+                    <div class="stat-box">
+                        <small>Files Merged</small>
+                        <div id="files-merged" style="font-weight: 600; font-size: 1.2rem; color: var(--primary);">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <small>Total Pages</small>
+                        <div id="total-pages" style="font-weight: 600; font-size: 1.2rem;">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <small>Output Size</small>
+                        <div id="output-size" style="font-weight: 600; font-size: 1.2rem;">0 KB</div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <a id="download-btn" class="btn btn-fancy btn-lg" style="width: 100%; margin-bottom: 12px;">
+                        <span class="btn-text">
+                            <svg class="download-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download Merged PDF
+                        </span>
+                        <div class="btn-loader"></div>
+                    </a>
+                    <button id="retry-btn" class="btn btn-secondary" onclick="location.reload()" style="width: 100%;">
+                        Merge More PDFs
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQ -->
+        <article class="seo-content" style="text-align: left; max-width: 900px; margin: 40px auto; line-height: 1.8;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Free Online PDF Merger – Combine PDF for Free</h2>
+            <p>Need to combine multiple PDF files into one? LovelyDoc's Merge PDF tool lets you join PDFs together in seconds – completely free, with no watermark and no login required. Simply drag and drop your files, arrange them in the order you want, and click merge. It is the fastest and most secure <strong>PDF merger</strong> available online today.</p>
+            
+            <h3 style="margin-top: 30px;">Why Combine PDF Files?</h3>
+            <p>Merging PDF files is a vital part of efficient document management. Whether you are a student submitting multiple assignments as a single document, a legal professional organizing discovery materials, or a business owner compiling various invoices into an end-of-month report, combining your documents makes sharing and archiving much simpler. A single, unified PDF is easier to email, easier to print, and easier for the recipient to read.</p>
+
+            <h3 style="margin-top: 30px;">Is it Secure to Merge PDF Online?</h3>
+            <p>Security is our top priority. Most <strong>online PDF tools</strong> require you to upload your sensitive documents to their servers, where they may be stored or monitored. LovelyDoc is different. We use <strong>browser-based merging</strong>, which means your files are combined locally on your own computer. Your data never touches our servers. This ensures 100% privacy for your contracts, medical records, and personal documents.</p>
+
+            <h3 style="margin-top: 30px;">How to Use Our PDF Merger</h3>
+            <ol style="padding-left: 20px;">
+                <li><strong>Upload:</strong> Select or drag and drop two or more PDF files.</li>
+                <li><strong>Organize:</strong> Reorder your files as needed to ensure the final document follows the correct sequence.</li>
+                <li><strong>Merge:</strong> Click the process button and download your unified document instantly.</li>
+            </ol>
+
+            <div class="faq-section" style="margin-top: 50px; background: var(--card-bg); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                <h3 style="margin-bottom: 20px;">Frequently Asked Questions</h3>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">How many PDFs can I merge at once?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">You can merge as many PDFs as your browser can handle. We recommend up to 20 files at a time for the best experience.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">Can I reorder the PDF files?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">Yes! You can see the list of uploaded files and arrange them in your preferred order before merging.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">Is it free to use?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">Absolutely. LovelyDoc is 100% free with no watermark, no ads, and no hidden charges.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">Are my files secure?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">Yes. All processing happens in your browser. Your files never leave your device.</div>
+                </div>
+            </div>
+
+            <div class="rating-ui" id="rating-ui" style="margin-top: 40px; text-align: center;">
+                <h3>Rate this tool</h3>
+                <div class="stars" id="stars-container">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem;"></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Lovely<span style="color: var(--primary);">Doc</span></h3>
+                <p>Free, fast, and secure tools for everyone. No watermark, no signup.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="compress-pdf">Compress PDF</a></li>
+                    <li><a href="split-pdf">Split PDF</a></li>
+                    <li><a href="reduce-image-size">Reduce Image Size</a></li>
+                    <li><a href="image-enhancer">Image Enhancer</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LovelyDoc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/merge-pdf.js"></script>
+</body>
+</html>

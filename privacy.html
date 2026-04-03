@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Toolznest</title>
-    <meta name="description" content="Privacy policy for Toolznest. Learn how we handle your data — spoiler: we don't collect any.">
+    <title>Privacy Policy - LovelyDoc</title>
+    <meta name="description" content="Privacy policy for LovelyDoc. Learn how we handle your data — spoiler: we don't collect any.">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo">Toolz<span class="highlight">nest</span></a>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="var(--primary)" />
+                    <path d="M4 16L16 22L28 16" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M4 22L16 28L28 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Lovely<span class="highlight">Doc</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#tools">Tools</a></li>
                 <li><a href="about.html">About</a></li>
+                <li class="mobile-only"><button class="theme-toggle-mobile">Switch to Dark Mode</button></li>
             </ul>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search tools..." id="tool-search">
+                </div>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+                <div class="menu-toggle" id="menu-toggle">☰</div>
+            </div>
         </div>
     </nav>
 
@@ -27,7 +43,7 @@
 
             <section style="margin-top: 40px;">
                 <h2>Overview</h2>
-                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">At Toolznest, your privacy is our top priority. All file processing on our platform happens entirely within your web browser. We do not upload, store, or transmit any of your files to our servers or any third-party service.</p>
+                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">At LovelyDoc, your privacy is our top priority. All file processing on our platform happens entirely within your web browser. We do not upload, store, or transmit any of your files to our servers or any third-party service.</p>
             </section>
 
             <section style="margin-top: 30px;">
@@ -37,7 +53,7 @@
 
             <section style="margin-top: 30px;">
                 <h2>Cookies</h2>
-                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">Toolznest does not use cookies for tracking purposes. If any cookies are used, they are strictly for improving user experience (e.g., remembering a rating preference) and contain no personal information.</p>
+                <p style="color: var(--text-muted); margin-top: 15px; line-height: 1.8;">LovelyDoc does not use cookies for tracking purposes. If any cookies are used, they are strictly for improving user experience (e.g., remembering a rating preference) and contain no personal information.</p>
             </section>
 
             <section style="margin-top: 30px;">
@@ -65,7 +81,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <h3>Toolz<span>nest</span></h3>
+                <h3>Lovely<span style="color: var(--primary);">Doc</span></h3>
                 <p>Free, fast, and secure tools for everyone.</p>
             </div>
             <div class="footer-links">
@@ -76,7 +92,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Toolznest. All rights reserved.</p>
+            <p>&copy; 2026 LovelyDoc. All rights reserved.</p>
         </div>
     </footer>
 </body>

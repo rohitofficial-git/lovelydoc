@@ -11,14 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewOriginal = document.getElementById('preview-original');
     const previewResult = document.getElementById('preview-result');
 
-    const modeBtns = document.querySelectorAll('.kb-preset-btn');
-    modeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            modeBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            mode = btn.getAttribute('data-mode');
-        });
-    });
+    // Mode selection removed based on user request. Defaults to 'auto'.
+
 
     // Handle File Selection
     window.setupDragAndDrop('upload-area', 'file-input', (file) => {
@@ -27,7 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         currentFile = file;
-        document.querySelector('.upload-label').textContent = file.name;
+        
+        // Update UI
+        const uploadArea = document.getElementById('upload-area');
+        const uploadIcon = uploadArea.querySelector('.upload-icon');
+        const uploadLabel = uploadArea.querySelector('.upload-label');
+        
+        // Show Image Preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            uploadIcon.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+            uploadIcon.style.border = "none";
+        };
+        reader.readAsDataURL(file);
+
+        uploadLabel.textContent = file.name;
         settingsPanel.style.display = 'block';
         resultArea.style.display = 'none';
 
@@ -87,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         processBtn.addEventListener('click', async () => {
             if (!currentFile) return;
 
-            processingUI.show('Processing your file…', 'Enhancing image quality');
+            processingUI.show('Processing your file...', 'Enhancing image quality');
+            processBtn.classList.add('loading');
             processBtn.disabled = true;
 
             try {
@@ -159,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             resultArea.style.display = 'block';
                         }, 400);
 
+                        processBtn.classList.remove('loading');
                         processBtn.disabled = false;
                     }, 50); // small delay to allow UI to update
                 };
@@ -168,6 +178,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred during enhancement.');
                 processBtn.disabled = false;
             }
+        });
+    }
+
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
         });
     }
 });

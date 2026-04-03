@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 fileListEl.appendChild(li);
             });
             document.querySelector('.upload-label').textContent = `${selectedFiles.length} file(s) selected`;
+
+            // Update UI Icon
+            const uploadArea = document.getElementById('upload-area');
+            const uploadIcon = uploadArea.querySelector('.upload-icon');
+            uploadIcon.innerHTML = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);"><path d="M7 8h10M7 12h10M7 16h6"></path><rect x="3" y="4" width="18" height="16" rx="2"></rect></svg>`;
+            uploadIcon.style.background = "var(--secondary)";
         }
     };
 
@@ -68,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         processBtn.addEventListener('click', async () => {
             if(selectedFiles.length === 0) return;
             
-            processBtn.textContent = 'Converting...';
+            processBtn.classList.add('loading');
             processBtn.disabled = true;
 
             const { jsPDF } = window.jspdf;
@@ -98,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 downloadBtn.href = pdfUrl;
                 downloadBtn.download = 'converted_document.pdf';
                 
-                processBtn.textContent = 'Convert to PDF';
+                processBtn.classList.remove('loading');
                 processBtn.disabled = false;
                 
             } catch(e) {
@@ -107,6 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 processBtn.textContent = 'Convert to PDF';
                 processBtn.disabled = false;
             }
+        });
+    }
+
+    // Add loader to download button
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            if (downloadBtn.classList.contains('loading')) {
+                e.preventDefault();
+                return;
+            }
+            
+            downloadBtn.classList.add('loading');
+            setTimeout(() => {
+                downloadBtn.classList.remove('loading');
+            }, 2000);
         });
     }
 

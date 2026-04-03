@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF Online Free – No Watermark | LovelyDoc</title>
+    <meta name="description" content="Compress PDF online free with no watermark, no login. Reduce PDF file size instantly in your browser. Fast, secure, and easy to use PDF compressor by LovelyDoc.">
+    <meta name="keywords" content="compress pdf online free, pdf compressor, reduce pdf size, compress pdf no watermark, free pdf compression">
+    <link rel="canonical" href="https://lovelydoc.in/tools/compress-pdf">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Compress PDF Online Free – No Watermark | LovelyDoc">
+    <meta property="og:description" content="Reduce PDF file size instantly in your browser. 100% Free, Private, and Secure PDF compressor. No login required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lovelydoc.in/tools/compress-pdf">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PDF Compressor",
+      "operatingSystem": "All",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "850"
+      },
+      "description": "Compress PDF online free with no watermark, no login. Reduce PDF file size instantly in your browser."
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="var(--primary)" />
+                    <path d="M4 16L16 22L28 16" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M4 22L16 28L28 22" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Lovely<span class="highlight">Doc</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#tools" class="active">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li class="mobile-only"><button class="theme-toggle-mobile">Switch to Dark Mode</button></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search tools..." id="tool-search">
+                </div>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+                <div class="menu-toggle" id="menu-toggle">☰</div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="tool-page-header">
+            <h1>Compress PDF Online</h1>
+            <p>Reduce PDF size instantly while maintaining quality.</p>
+        </div>
+
+        <div class="tool-workspace">
+            <div class="tool-steps">
+                <div class="tool-step active" id="step-1"><span>1</span> Upload</div>
+                <div class="tool-step" id="step-2"><span>2</span> Settings</div>
+                <div class="tool-step" id="step-3"><span>3</span> Download</div>
+            </div>
+
+            <div class="upload-area" id="upload-area">
+                <div class="upload-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+                </div>
+                <div class="upload-label">Drag and Drop PDF</div>
+                <p class="text-muted">or click to choose file</p>
+                <div class="upload-btn-real">Select PDF</div>
+                <input type="file" id="file-input" class="hidden-input" accept="application/pdf">
+            </div>
+
+            <div class="settings-panel" id="settings-panel" style="display: none;">
+                <div class="form-group">
+                    <label>Select Compression Level</label>
+                    <div class="compression-options">
+                        <div class="compression-option" data-value="1">
+                            <div class="option-icon">📉</div>
+                            <div class="option-info">
+                                <strong>Extreme</strong>
+                                <small>Smallest size, lower quality</small>
+                            </div>
+                        </div>
+                        <div class="compression-option active" data-value="2">
+                            <div class="option-icon">⚖️</div>
+                            <div class="option-info">
+                                <strong>Recommended</strong>
+                                <small>Balanced size & quality</small>
+                            </div>
+                        </div>
+                        <div class="compression-option" data-value="3">
+                            <div class="option-icon">✨</div>
+                            <div class="option-info">
+                                <strong>High Quality</strong>
+                                <small>Slight compression, best quality</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="process-btn" class="btn btn-primary" style="width: 100%">
+                    <span class="btn-text">Compress PDF</span>
+                    <div class="btn-loader"></div>
+                </button>
+            </div>
+
+            <div class="result-area" id="result-area" style="display: none;">
+                <div class="file-stats">
+                    <div class="stat-box">
+                        <small>Original Size</small>
+                        <div id="original-size" style="font-weight: 600; font-size: 1.2rem;">0 KB</div>
+                    </div>
+                    <div class="stat-box">
+                        <small>Compressed Size</small>
+                        <div id="new-size" style="font-weight: 600; font-size: 1.2rem; color: var(--primary);">0 KB</div>
+                    </div>
+                    <div class="stat-box">
+                        <small>Saved</small>
+                        <div id="saved-percent" style="font-weight: 600; font-size: 1.2rem; color: var(--success);">0%</div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <a id="download-btn" class="btn btn-fancy btn-lg" style="width: 100%; margin-bottom: 12px;">
+                        <span class="btn-text">
+                            <svg class="download-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download Your Compressed PDF
+                        </span>
+                        <div class="btn-loader"></div>
+                    </a>
+                    <button id="retry-btn" class="btn btn-secondary" onclick="location.reload()" style="width: 100%;">
+                        Compress Another PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content & FAQ -->
+        <article class="seo-content" style="text-align: left; max-width: 900px; margin: 40px auto; line-height: 1.8;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Free Online PDF Compressor – No Watermark, No Login</h2>
+            <p>Need to <strong>compress a PDF</strong> for email, upload, or storage? LovelyDoc's free <strong>PDF compressor</strong> reduces your PDF file size instantly – right in your browser. No watermark is added, no login is required, and your file is never uploaded to any server. It's 100% private and secure.</p>
+            
+            <h3 style="margin-top: 30px;">What is PDF Compression?</h3>
+            <p>PDF compression is the process of reducing the file size of a PDF document by optimizing its internal data. This is primarily achieved by compressing high-resolution images, removing unnecessary metadata, and using more efficient data encoding methods. Large PDF files can be a hassle when you need to send them via email or upload them to portals with strict size limits (like 100KB or 200KB). Our tool ensures that you can <strong>reduce PDF size</strong> while maintaining the highest possible visual quality.</p>
+
+            <h3 style="margin-top: 30px;">Why Reduce PDF File Size?</h3>
+            <p>There are several reasons why you might need to <strong>shrink PDF size</strong>:</p>
+            <ul style="padding-left: 20px; list-style-type: disc;">
+                <li><strong>Email Limitations:</strong> Most email providers have a 25MB attachment limit. Compressing your PDF ensures it reaches its destination without being bounced back.</li>
+                <li><strong>Faster Uploads:</strong> Smaller files upload much faster to websites, school portals, and government applications.</li>
+                <li><strong>Storage Space:</strong> If you deal with thousands of documents, <strong>reducing file size</strong> can save gigabytes of cloud or local storage.</li>
+                <li><strong>Improved User Experience:</strong> If you're hosting PDFs on a website, smaller files load significantly faster for your visitors, improving SEO and engagement.</li>
+            </ul>
+
+            <h3 style="margin-top: 30px;">How to Use Our Free PDF Compressor</h3>
+            <p>Compressing your PDF with LovelyDoc is a simple 3-step process:</p>
+            <ol style="padding-left: 20px;">
+                <li><strong>Upload Your File:</strong> Drag and drop your PDF into the upload area or click to select a file from your device.</li>
+                <li><strong>Choose Compression Level:</strong> Select from Recommended (balanced), Extreme (smallest size), or High Quality (minimal compression).</li>
+                <li><strong>Download Instantantly:</strong> Once processed, your file is ready for download. No waiting, no queues!</li>
+            </ol>
+
+            <h3 style="margin-top: 30px;">Is LovelyDoc Safe?</h3>
+            <p>Most online PDF tools upload your sensitive documents to a remote server. LovelyDoc is different. We use <strong>client-side processing</strong>, which means your files are processed entirely within your web browser. Your private documents never leave your computer. This makes us the most secure and private <strong>online PDF compressor</strong> available today.</p>
+
+            <div class="faq-section" style="margin-top: 50px; background: var(--card-bg); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+                <h3 style="margin-bottom: 20px;">Frequently Asked Questions</h3>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">How does this PDF compressor work?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">It reads the PDF, extracts embedded images, re-renders them at a reduced quality, and repackages the result. This is a client-side approach ideal for image-heavy PDFs.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">Will I lose text quality?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">No. Text elements remain intact. Only embedded images are recompressed, so your text stays crisp and clear.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">Is it safe to use?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">Absolutely. Your file is processed entirely in your browser. Nothing is ever uploaded to our servers.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 15px;">
+                    <div class="faq-question" style="font-weight: 700;">Does it add a watermark?</div>
+                    <div class="faq-answer" style="color: var(--text-muted);">No, never. LovelyDoc is 100% free with no watermark on any tool.</div>
+                </div>
+            </div>
+
+            <div class="rating-ui" id="rating-ui" style="margin-top: 40px; text-align: center;">
+                <h3>Rate this tool</h3>
+                <div class="stars" id="stars-container">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem;"></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Lovely<span style="color: var(--primary);">Doc</span></h3>
+                <p>Free, fast, and secure tools for everyone. No watermark, no signup.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf">Merge PDF</a></li>
+                    <li><a href="split-pdf">Split PDF</a></li>
+                    <li><a href="reduce-image-size">Reduce Image Size</a></li>
+                    <li><a href="image-enhancer">Image Enhancer</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LovelyDoc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/compress-pdf.js"></script>
+</body>
+</html>

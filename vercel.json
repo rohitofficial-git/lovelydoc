@@ -2,15 +2,15 @@
     "cleanUrls": true,
     "trailingSlash": false,
     "rewrites": [
-        { "source": "/compress-pdf-online-free", "destination": "/tools/compress-pdf-online-free.html" },
-        { "source": "/merge-pdf-online", "destination": "/tools/merge-pdf-online.html" },
-        { "source": "/reduce-image-size-100kb", "destination": "/tools/reduce-image-size-100kb.html" },
-        { "source": "/image-compressor", "destination": "/tools/image-compressor.html" },
-        { "source": "/image-resizer", "destination": "/tools/image-resizer.html" },
-        { "source": "/image-to-pdf", "destination": "/tools/image-to-pdf.html" },
-        { "source": "/image-enhancer", "destination": "/tools/image-enhancer.html" },
-        { "source": "/split-pdf-online", "destination": "/tools/split-pdf-online.html" },
-        { "source": "/ai-summarizer", "destination": "/tools/ai-summarizer.html" }
+        { "source": "/tools/compress-pdf", "destination": "/tools/compress-pdf.html" },
+        { "source": "/tools/merge-pdf", "destination": "/tools/merge-pdf.html" },
+        { "source": "/tools/reduce-image-size", "destination": "/tools/reduce-image-size.html" },
+        { "source": "/tools/image-compressor", "destination": "/tools/image-compressor.html" },
+        { "source": "/tools/image-resizer", "destination": "/tools/image-resizer.html" },
+        { "source": "/tools/image-to-pdf", "destination": "/tools/image-to-pdf.html" },
+        { "source": "/tools/image-enhancer", "destination": "/tools/image-enhancer.html" },
+        { "source": "/tools/split-pdf", "destination": "/tools/split-pdf.html" },
+        { "source": "/tools/ai-summarizer", "destination": "/tools/ai-summarizer.html" }
     ],
     "headers": [
         {
