@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lovelydoc.com/sitemap.xml
+Sitemap: https://lovelydoc.in/sitemap.xml
