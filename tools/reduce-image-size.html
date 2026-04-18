@@ -21,7 +21,7 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "100KB Image Reducer",
+      "name": "Image Size Reducer",
       "operatingSystem": "All",
       "applicationCategory": "UtilitiesApplication",
       "offers": {
@@ -32,9 +32,36 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "1150"
+        "ratingCount": "1540"
       },
-      "description": "Specialized image compression tool to specifically target the 100KB file size limit for online applications and forms."
+      "description": "Powerful tool to reduce image size to 100KB, 50KB, or 20KB exactly. Perfect for passport and official applications.",
+      "featureList": "Exact KB target, No watermark, Local browser processing, Multi-format support"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Reduce Image Size to 100KB Online",
+      "description": "Step-by-step guide to shrinking photos to specific KB limits.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Select your JPG or PNG photo and upload it to our secure local workspace."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Select your target size (e.g., 100KB) from the presets or enter a custom KB value."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click 'Reduce to Target Size' and our algorithm will instantly find the optimal compression."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Download your perfectly sized image immediately."
+        }
+      ]
     }
     </script>
 
@@ -69,9 +96,17 @@
     </nav>
 
     <main class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <span class="separator">/</span>
+            <a href="/#tools">Tools</a>
+            <span class="separator">/</span>
+            <span class="current">Reduce Image Size</span>
+        </nav>
+
         <div class="tool-page-header">
             <h1>Reduce Image Size to 100KB</h1>
-            <p>Compress images to your exact target size without losing quality.</p>
+            <p>Compress image to 100KB, 50KB, or 20KB exactly without sacrificing visual clarity.</p>
         </div>
 
         <div class="tool-workspace">
@@ -195,8 +230,30 @@
                     <span class="star" data-value="4">★</span>
                     <span class="star" data-value="5">★</span>
                 </div>
-                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem;"></p>
+                <p id="rating-msg" class="text-muted" style="font-size: 0.9rem; transition: opacity 0.3s;"></p>
             </div>
+
+            <section class="related-tools" style="margin-top: 60px;">
+                <h3>Related Tools</h3>
+                <div class="related-grid">
+                    <a href="/tools/image-compressor" class="related-item">
+                        <span class="related-icon">🗜️</span>
+                        <span>Image Compressor</span>
+                    </a>
+                    <a href="/tools/image-resizer" class="related-item">
+                        <span class="related-icon">📐</span>
+                        <span>Image Resizer</span>
+                    </a>
+                    <a href="/tools/image-enhancer" class="related-item">
+                        <span class="related-icon">✨</span>
+                        <span>Image Enhancer</span>
+                    </a>
+                    <a href="/tools/image-to-pdf" class="related-item">
+                        <span class="related-icon">📄</span>
+                        <span>Image to PDF</span>
+                    </a>
+                </div>
+            </section>
         </article>
     </main>
 
